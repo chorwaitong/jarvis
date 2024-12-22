@@ -35,14 +35,11 @@ To ensure compatibility and reproducibility, create a virtual environment using 
    ```
 
 ### 2. Set Up Google Project and Enable Gmail API
-Refer to README_GMailAPI
+Refer to [README_GMailAPI](https://github.com/chorwaitong/jarvis/blob/main/README_GMailAPI)
 
 ### 3. Create Gemini LLM API Key
+Refer to [README_GeminiAPI]()
 
-#### Steps:
-1. Sign up or log in to the [Gemini AI Studio](https://aistudio.google.com/app/apikey).
-2. Generate an API key from the dashboard.
-3. Save the API key, you can consider saving it as an environment variable for security (sorry I didn't opt this).
 
 ### 4. Run the Main Program
 
