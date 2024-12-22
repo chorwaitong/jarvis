@@ -25,12 +25,14 @@ To ensure compatibility and reproducibility, create a virtual environment using 
    git clone https://github.com/chorwaitong/jarvis.git
    cd jarvis
    ```
-2. Create the environment:
+   [Guide to install Git](https://github.com/git-guides/install-git)
+   
+3. Create the environment (I'm using Anaconda):
    ```bash
    conda env create -f environment.yml -n <env_name>
    ```
    P.S.: For Ana(conda) users, if you encounter some conda verification or corrupt error, ```conda clean --all ``` might help.
-3. Activate the environment:
+4. Activate the environment:
    ```bash
    conda activate <env_name>
    ```
