@@ -38,7 +38,7 @@ To ensure compatibility and reproducibility, create a virtual environment using 
 Refer to [README_GMailAPI](https://github.com/chorwaitong/jarvis/blob/main/README_GMailAPI)
 
 ### 3. Create Gemini LLM API Key
-Refer to [README_GeminiAPI]()
+Refer to [README_GeminiAPI](https://github.com/chorwaitong/jarvis/edit/main/README_GeminiAPI.md)
 
 
 ### 4. Run the Main Program
