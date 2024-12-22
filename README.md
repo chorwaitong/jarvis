@@ -34,14 +34,10 @@ To ensure compatibility and reproducibility, create a virtual environment using 
    conda activate jarvis
    ```
 
-### 2. Set Up Google Project and Enable Gmail API
-Refer to [README_GMailAPI](https://github.com/chorwaitong/jarvis/blob/main/README_GMailAPI)
+### 2. Follow the following instructions for setting up Gmail automation
+Refer to ([README_GMailAPI](https://github.com/chorwaitong/jarvis/blob/main/README_GMailAutomate.md))
 
-### 3. Create Gemini LLM API Key
-Refer to [README_GeminiAPI](https://github.com/chorwaitong/jarvis/edit/main/README_GeminiAPI.md)
-
-
-### 4. Run the Main Program
+### 3. Run the Main Program
 
 Once the setup is complete, you can run the main program:
 
