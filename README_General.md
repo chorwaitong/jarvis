@@ -35,17 +35,7 @@ To ensure compatibility and reproducibility, create a virtual environment using 
    ```
 
 ### 2. Set Up Google Project and Enable Gmail API
-
-#### Steps:
-1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
-2. Create a new project by following the guide [Create a Google Cloud project ](https://developers.google.com/workspace/guides/create-project)
-3. Navigate to **APIs & Services** > **Library** and enable the **Gmail API**.
-4. Configure OAuth consent screen:
-   - Set up your application name and scope.
-   - Add yourself as a test user.
-5. Create credentials:
-   - Select **OAuth 2.0 Client IDs**.
-   - Download the credentials JSON file and save it as `credentials.json` in the subfolder [\credentials\] of the project directory.
+Refer to README_GMailAPI
 
 ### 3. Create Gemini LLM API Key
 
