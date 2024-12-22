@@ -27,11 +27,12 @@ To ensure compatibility and reproducibility, create a virtual environment using 
    ```
 2. Create the environment:
    ```bash
-   conda env create --name jarvis -f environment.yml
+   conda create --name <env_name> --file requirement.txt
    ```
+   P.S.: For Ana(conda) users, if you encounter some conda verification or corrupt error, ```conda clean --all ``` might help.
 3. Activate the environment:
    ```bash
-   conda activate jarvis
+   conda activate <env_name>
    ```
 
 ### 2. Follow the following instructions for setting up Gmail automation
@@ -44,7 +45,7 @@ Once the setup is complete, you can run the main program:
 #### Steps:
 1. Ensure the virtual environment is active:
    ```bash
-   conda activate jarvis
+   conda activate <env_name>
    ```
 2. Run the program:
    ```bash
