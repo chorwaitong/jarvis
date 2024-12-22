@@ -1,6 +1,6 @@
 # Jarvis
 
-The project **Jarvis** is a long-term personal project aimed at automating virtually everything. In this humble beginning, the current focus is on automating work email management using Gemini LLM-based LangChain, Gmail API, and Python.
+The project **Jarvis** is a long-term personal project aimed at controlling/ automating virtually everything. In this humble beginning, the current focus is on automating work email management using Gemini LLM-based LangChain, Gmail API, and Python.
 
 ---
 
