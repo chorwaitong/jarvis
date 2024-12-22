@@ -27,7 +27,7 @@ To ensure compatibility and reproducibility, create a virtual environment using 
    ```
 2. Create the environment:
    ```bash
-   conda create --name <env_name> --file requirement.txt
+   conda env create -f environment.yml -n <env_name>
    ```
    P.S.: For Ana(conda) users, if you encounter some conda verification or corrupt error, ```conda clean --all ``` might help.
 3. Activate the environment:
