@@ -15,4 +15,10 @@
 ## Steps:
 1. Sign up or log in to the [Gemini AI Studio](https://aistudio.google.com/app/apikey).
 2. Generate an API key from the dashboard.
-3. Save the API key, you can consider saving it as an environment variable for security purposes. 
+3. Save the API key as an environment variable with name "GOOGLE_API_KEY".
+
+# Setting up Mailbox
+Nothing much, except to create 3 additional labels (you can customize it, just make sure it matches with the code), i.e., _AI_general_info, _AI_need_action, _AI_urgent.
+
+# Edit codes
+1. 
