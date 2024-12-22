@@ -38,7 +38,7 @@ To ensure compatibility and reproducibility, create a virtual environment using 
 
 #### Steps:
 1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
-2. Create a new project by following the guide [Create a Google Cloud project ] (https://developers.google.com/workspace/guides/create-project)
+2. Create a new project by following the guide [Create a Google Cloud project ](https://developers.google.com/workspace/guides/create-project)
 3. Navigate to **APIs & Services** > **Library** and enable the **Gmail API**.
 4. Configure OAuth consent screen:
    - Set up your application name and scope.
@@ -50,16 +50,9 @@ To ensure compatibility and reproducibility, create a virtual environment using 
 ### 3. Create Gemini LLM API Key
 
 #### Steps:
-1. Sign up or log in to the [Gemini API Platform](https://gemini.example.com/).
+1. Sign up or log in to the [Gemini AI Studio](https://aistudio.google.com/app/apikey).
 2. Generate an API key from the dashboard.
-3. Save the API key in an environment variable for security:
-   ```bash
-   export GEMINI_API_KEY="your_gemini_api_key"
-   ```
-   Alternatively, you can create a `.env` file in the project root and add:
-   ```
-   GEMINI_API_KEY=your_gemini_api_key
-   ```
+3. Save the API key, you can consider saving it as an environment variable for security (sorry I didn't opt this).
 
 ### 4. Run the Main Program
 
