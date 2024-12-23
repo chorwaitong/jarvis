@@ -99,4 +99,11 @@ if stat_code == 0 and email_msg is not None:
             # Mark the current thread ID as processed
             readThreadIDs.append(lastUnread.threadID)
             print('Complete')
-        else
+        else:
+            print('Failed to assess email. {}'.format(outputJSON))
+        
+        time.sleep(15)
+else:
+    print('Failed to obtain/ there is no unread messages. {}'.format(email_msg))  
+  
+print('Operation complete')
