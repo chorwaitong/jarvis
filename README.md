@@ -49,9 +49,10 @@ Once the setup is complete, you can run the main program:
    ```bash
    conda activate <env_name>
    ```
-2. Run the program:
+2. Run the intended program:
+2.1 To automate mail
    ```bash
-   python main.py
+   python automateGmail.py
    ```
 
 ---
