@@ -9,7 +9,7 @@
 5. Create credentials:
    - Select **OAuth 2.0 Client IDs**.
    - Download the credentials JSON file and save it as `credentials.json` in the subfolder [\credentials\] of the project directory.
-6. The first run of the Gmail auth should create a 'token.json' in the subfolder [\credentials\] after going through the auth process via web browser.
+6. The first run of the Gmail auth should create a 'token.json' in the subfolder [\credentials\] after going through the auth process via web browser. Remember to allow all scopes on the consent screen.
 
 # Setting up Gemini API
 ## Steps:
