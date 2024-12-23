@@ -5,7 +5,7 @@
 3. Navigate to **APIs & Services** > **Library** and enable the **Gmail API**.
 4. Configure OAuth consent screen:
    - Set up your application name and scope.
-   - Add yourself as a test user.
+   - (optional) Add yourself as a test user.
 5. Create credentials:
    - Select **OAuth 2.0 Client IDs**.
    - Download the credentials JSON file and save it as `credentials.json` in the subfolder [\credentials\] of the project directory.
@@ -20,5 +20,5 @@
 # Setting up Mailbox
 Nothing much, except to create 3 additional labels (you can customize it, just make sure it matches with the code), i.e., _AI_general_info, _AI_need_action, _AI_urgent.
 
-# Edit codes
-1. 
+# Customization
+1. Customize how the LLM perceive the email, and the persona via the prompt template \jarvis\templates.py2. 
