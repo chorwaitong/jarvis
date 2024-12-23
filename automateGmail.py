@@ -92,7 +92,7 @@ if stat_code == 0 and email_msg is not None:
                 
                 # Relabel the thread with the "general info" label
                 relabel_stat_code, relabel_msg = skill.gmailRelabel(
-                    lastUnread.threadID, [jrvs.skills.gmailLabels_general]
+                    lastUnread.threadID, [skill.gmailLabels_general]
                 )
                 print('[Code: {}] - {}'.format(relabel_stat_code, relabel_msg))
             
