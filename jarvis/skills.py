@@ -175,8 +175,8 @@ class skills():
                                        + ' ' + sendcc if sendcc is not None else '',
                                    "email_body": emailText , "query": query})
             if 'urgent' in outputJSON and 'need_action' in outputJSON and 'draft_reply' in outputJSON:
-                outputJSON['emailText'] = emailText
-                print('Valid LLM response received. {}'.format(outputJSON))
+                # outputJSON['emailText'] = emailText
+                print('Urgent? {}, Need Action? {}, Reply: {}'.format(outputJSON['urgent'],outputJSON['need_action'],outputJSON['draft_reply']))
             else:
                 print (outputJSON, type(outputJSON))
             return 0, outputJSON
