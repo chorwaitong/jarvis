@@ -5,7 +5,7 @@ from email import message_from_string
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-from jarvis.templates import promptTemplateMailSummary, promptTemplateMailDraft
+from jarvis.templates import promptTemplateMailDraft
 
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
