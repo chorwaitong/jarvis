@@ -79,6 +79,13 @@ class skills():
                 if self.gmailLabels_general and self.gmailLabels_action and self.gmailLabels_urgent:
                     print ('Valid gmail labels obtained.')
                     self.validGmailLabels = True
+                else:
+                    print('One or more labels are missing, we got: ')
+                    print(self.gmailLabels_general)
+                    print(self.gmailLabels_action)
+                    print(self.gmailLabels_urgent)
+            else:
+                print('Unable to obtain list of Gmail labels')
             return 0, 'GMail auth success.'
             
             
