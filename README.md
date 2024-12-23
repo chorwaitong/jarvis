@@ -26,6 +26,11 @@ To ensure compatibility and reproducibility, create a virtual environment using 
    cd jarvis
    ```
    [Guide to install Git](https://github.com/git-guides/install-git)
+
+   to update:
+   ```bash
+   git pull origin main
+   ```
    
 3. Create the environment (I'm using Anaconda):
    ```bash
