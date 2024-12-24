@@ -15,6 +15,7 @@ from langchain_core.output_parsers import JsonOutputParser
 from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 import pandas as pd
+import quopri
 import re
 import requests
 import subprocess
@@ -132,9 +133,9 @@ class skills():
             message.attach(MIMEText(responseText + '\n\n\n', 'plain'))
             for part in bodyParts: #Add original email content
                 if part.get_content_type() == 'text/plain':
-                    message.attach(MIMEText(part.get_payload(), 'plain'))
+                    message.attach(MIMEText(part.get_payload(decode=True).decode("utf-8"), 'plain'))
                 elif  part.get_content_type() == 'text/html':
-                    message.attach(MIMEText(part.get_payload(), 'html'))   
+                    message.attach(MIMEText(part.get_payload(decode=True).decode("utf-8"), 'html'))   
             
             message["To"] = sendto
             message["From"] = "me"
@@ -200,11 +201,17 @@ def getTextFromMailPart(part):
     
     contentType = part.get_content_type()
     if  contentType == 'text/plain':
-        msg = part.get_payload()
+        msg = part.get_payload(decode=True).decode("utf-8")
     elif  contentType == 'text/html':
-        msg = bs(part.get_payload(), 'html.parser').get_text()
+        try:
+            msg = bs(part.get_payload(decode=True).decode("utf-8"), 'html.parser').get_text()
+        except :
+            try:
+                msg = bs(part.get_payload(decode=True).decode("utf-8"), 'lxml').get_text()
+            except:
+                msg = ''
     else:
-        msg = None
+        msg = ''
     return clean(msg)
 
 def getTextFromEmail(listMIME):
