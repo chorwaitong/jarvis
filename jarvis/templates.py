@@ -34,6 +34,7 @@ def promptTemplateMailDraft():
     query += datetime.now().strftime('%b %d, %Y')
     query += " , if it requires my action within two weeks, label it as urgent (YES/NO) \n " \
             " Your response should be strictly in JSON object with two keys, i.e., 'urgent' and 'need_action'. "\
+            " There should not be any json word label in your response. "\
             " An example of the response is : '''{'urgent':'YES', 'need_action':'YES'}'''"
             # " ** There is no need to reply to calendar event, or the acceptance of someone on an event. \n "\
             # " ** If reply is required, propose a consice reply professionally. \n "\
