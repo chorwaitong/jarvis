@@ -48,7 +48,7 @@ if stat_code == 0 and email_msg is not None:
         if stat_code == 0:
             # If the email is classified as "urgent"
             if outputJSON['urgent'].lower() == 'yes':
-                print('Drafting Reply and assigning urgent label')                
+                print('Assigning urgent label')                
                 # Relabel the thread with the "urgent" label
                 relabel_stat_code, relabel_msg = skill.gmailRelabel(
                     lastUnread.threadID, [skill.gmailLabels_urgent]
