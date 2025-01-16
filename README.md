@@ -74,7 +74,10 @@ Once the setup is complete, you can run the main program by running:
 - Improve the learning and adaptability of Jarvis through advanced AI techniques.
 
 ---
+## Credits
+- Referencing design of ([python-chat](https://github.com/burakorkmez/python-chat)) for the Jarvis app page.
 
+---
 ## Contributing
 Contributions are welcome! Feel free to fork the repository and submit a pull request.
 
