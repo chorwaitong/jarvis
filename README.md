@@ -44,22 +44,16 @@ To ensure compatibility and reproducibility, create a virtual environment using 
    conda activate <env_name>
    ```
 
-### 2. Follow the following instructions for setting up Gmail automation
-Refer to ([README_GMailAPI](https://github.com/chorwaitong/jarvis/blob/main/README_GMailAutomate.md))
-
+### 2. Follow the following instructions for setting up stuffs
+- Gmail API Access: Refer to ([README_GMailAPI](https://github.com/chorwaitong/jarvis/blob/main/README_GMailAutomate.md))
+- Gemini API Access: Refer to ([Get a Gemini API Key](https://ai.google.dev/gemini-api/docs/api-key))
+- Sign up for an MQTT Broker account, I am using HiveMQ Cloud: Refer ([HiveMQ Cloud](https://docs.hivemq.com/hivemq-cloud/quick-start-guide.html))
+  
 ### 3. Run the Main Program
 
-Once the setup is complete, you can run the main program:
-
-#### Steps:
-1. Ensure the virtual environment is active:
+Once the setup is complete, you can run the main program by running:
    ```bash
-   conda activate <env_name>
-   ```
-2. Run the intended program:
-2.1 To automate mail
-   ```bash
-   python automateGmail.py
+   run.bat
    ```
 
 ---
