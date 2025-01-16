@@ -2,7 +2,8 @@
 
 # Jarvis
 
-Youtube:
+Watch in Youtube:
+
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/gwRaSlDPZv8/0.jpg)](https://www.youtube.com/watch?v=gwRaSlDPZv8&ab_channel=ChorWT)
 
 The project **Jarvis** is a long-term personal project aimed at controlling/ automating virtually everything. In this humble beginning, the current focuses includes the following features with Gemini LLM-based LangChain, Gmail API, MQTT, and Python.
