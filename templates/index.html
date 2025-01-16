@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+		<title>Jarvis App</title>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"
+			integrity="sha512-luMnTJZ7oEchNDZAtQhgjomP1eZefnl82ruTH/3Oj/Yu5qYtwL7+dVRccACS/Snp1lFXq188XFipHKYE75IaQQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+
+		<style>
+			:root {
+				--primary-color: #4a90e2;
+				--primary-light: #5da8ff;
+				--primary-dark: #3a7cbd;
+				--secondary-color: #e6f7ff; 
+				--text-color: #2c3e50;
+				--bg-color: #f0f8ff;
+				--message-bg: #e1eeff;
+				--system-message-color: #8fa4b8;
+				--chat_header_height:50px;
+				--chat_header_padding:20px;
+				--chat_input_height:50px;
+                --chat_input_padding:20px;
+                				
+			}
+
+			body {
+				font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+				margin: 0;
+				padding: 0;
+				background-color: var(--bg-color);
+				color: var(--text-color);
+			}
+
+            .row{
+                width:98vw;
+                height:98vh;
+                max-height:98vh;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            
+			.chat-container {
+    			width:100%;
+				max-width: 40vw;
+				min-width: 380px;
+				max-height:100%;
+				margin: 20px auto;
+				background-color: white;
+				border-radius: 15px;
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+				overflow: hidden;
+			}
+			
+            .modules-container {
+                display: flex;
+                width:100%;
+                max-height:100%;
+                max-width:40vw;
+                flex-wrap: wrap;
+                justify-content: center;
+				margin: 20px auto;
+				background-color: white;
+				border-radius: 15px;
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }			
+
+            .module {
+                width: 150px;
+                height: 100px;
+                border: 1px solid #ccc;
+                margin: 10px;
+                padding: 10px;
+                text-align: center;
+                background-color: #f0f0f0;
+                border-radius: 5px;
+            }
+    
+            .module.inactive {
+                opacity: 0.5;
+            }
+    
+            .module h3 {
+                margin-bottom: 5px;
+            }
+    
+            .module p {
+                margin: 0;
+            }
+            
+            .toggle-button {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                width: 50px;
+                height: 25px;
+                background-color: #ccc;
+                border-radius: 15px;
+                position: relative;
+                display: inline-block;
+                transition: 0.3s;
+            }
+    
+            .toggle-button::before {
+                content: "";
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                width: 21px;
+                height: 21px;
+                background-color: #fff;
+                border-radius: 50%;
+                transition: 0.3s;
+            }
+    
+            .toggle-button.active {
+                background-color: #4CAF50;
+            }
+    
+            .toggle-button.active::before {
+                left: 28px;
+            }
+        
+			.chat-header {
+			    background: linear-gradient(to right, #361940, #100f57 , #cc41c5); /* Gemini-like gradient */
+                color: #fff;				
+				height: var(--chat_header_height);				
+				padding: var(--chat_header_padding);
+				text-align: center;
+				font-size: 24px;
+				font-weight: bold;
+			}
+
+			.chat-messages {
+				height: calc(calc(100% - var(--chat_header_height) - 2*var(--chat_header_padding) - var(--chat_input_height) - 2*var(--chat_input_padding) - 40px));
+				overflow-y: auto;
+				padding: 20px;
+				background-color: var(--secondary-color);
+			}
+
+			.message {
+				margin-bottom: 15px;
+				display: flex;
+				align-items: flex-start;
+			}
+
+			.message img {
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				margin-right: 10px;
+				border: 2px solid var(--primary-color);
+			}
+
+			.message-content {
+				background-color: var(--message-bg);
+				padding: 12px;
+				border-radius: 18px;
+				max-width: 70%;
+				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+			}
+
+			.message-username {
+				font-weight: bold;
+				margin-bottom: 5px;
+				color: var(--primary-dark);
+			}
+
+			.chat-input {
+				display: flex;
+				height: var(--chat_input_height);
+				padding: var(--chat_input_padding);
+				background-color: white;
+				border-top: 1px solid var(--secondary-color);
+			}
+
+			#message-input{
+				flex-grow: 1;
+				padding: 12px;
+				border: 1px solid var(--secondary-color);
+				border-radius: 25px;
+				margin-right: 10px;
+				font-size: 16px;
+			}
+
+			#send-button,
+			#update-username-button {
+				background-color: var(--primary-color);
+				color: white;
+				border: none;
+				padding: 12px 20px;
+				border-radius: 25px;
+				cursor: pointer;
+				font-size: 16px;
+				transition: background-color 0.3s ease;
+			}
+
+			#send-button:hover,
+			#update-username-button:hover {
+				background-color: var(--primary-dark);
+			}
+			
+			.record-button {
+                background-color: #ff4d4d;
+                border: none;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+            .record-button:hover {
+                background-color: #ff1a1a;
+            }
+            .record-button:active {
+                background-color: #cc0000;
+            }
+            .record-button i {
+                color: white;
+                font-size: 24px;
+            }
+            
+
+			.system-message {
+				text-align: center;
+				font-style: italic;
+				color: var(--system-message-color);
+				margin: 10px 0;
+			}
+
+			.message.sent {
+				flex-direction: row-reverse;
+			}
+
+			.message.sent .message-content {
+				background-color: var(--primary-color);
+				color: white;
+				margin-left: 10px;
+				margin-right: 0;
+			}
+
+			.message.sent .message-username {
+				text-align: right;
+				color: white;
+			}
+
+			.message.sent img {
+				margin-right: 0;
+				margin-left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+    	<div class="row">
+    		<div class="chat-container">
+    			<div class="chat-header">Jarvis Chat</div>
+    			<div class="chat-messages" id="chat-messages"></div>
+    			<div class="chat-input">
+    				<input type="text" id="message-input" placeholder="Type your message..." />
+    				<button id="send-button">Send</button>
+    				<button id="record-button" class="record-button">
+        				<i class="fas fa-microphone"></i>
+    				</button>
+    			</div>
+    		</div>
+    		
+    		<div class="modules-container">
+            </div>
+        </div>
+		<script>
+			const socket = io();
+			const chatMessages = document.getElementById("chat-messages");
+			const messageInput = document.getElementById("message-input");
+			const sendButton = document.getElementById("send-button");
+            const recordButton = document.getElementById("record-button");
+            var haveDevicesListed = false;
+            var isDevicesListing = false;
+            
+            var modules = [
+                { id: 'temperature', name: 'Temperature', type: 'range'},
+                { id: 'humidity', name: 'Humidity', type: 'range'}              
+            ];
+        
+			socket.on("new_message", (data) => {
+    			if (data.from==="iot"){
+        			updModules = JSON.parse(data.message);     
+        			console.log(updModules);			
+        			if (haveDevicesListed){
+            			updModules.forEach(function(indModule){
+                    		updateModule(indModule.id, indModule.type, indModule.status, indModule.val);            			
+            			});
+        			}else{
+            			haveDevicesListed = true;
+            			listAllDevices(updModules);
+        			}
+    			}else{
+        			console.log(data);
+        			addMessage(data.message, data.from);
+    			}
+			});
+
+			sendButton.addEventListener("click", sendMessage);
+			messageInput.addEventListener("keypress", (e) => {
+				if (e.key === "Enter") sendMessage();
+			});
+
+			function sendMessage() {
+				const message = messageInput.value.trim();
+				if (message) {
+					socket.emit("user_message", {message});
+					messageInput.value = "";
+				}
+			}
+
+			function addMessage(message, from) {
+				const messageElement = document.createElement("div");
+				messageElement.className = "message";
+
+				if (from.toLowerCase() === "user" || from.toLowerCase() === "jarvis") {
+				
+    				if (from === "user"){
+        				messageElement.classList.add("sent");
+    				}
+
+					//const avatarImg = document.createElement("img");
+					//avatarImg.src = avatar;
+					//messageElement.appendChild(avatarImg);
+
+					const contentDiv = document.createElement("div");
+					contentDiv.className = "message-content";
+
+					const usernameDiv = document.createElement("div");
+					usernameDiv.className = "message-username";
+					usernameDiv.textContent = from;
+					contentDiv.appendChild(usernameDiv);
+
+					const messageText = document.createElement("div");
+					messageText.textContent = message;
+					contentDiv.appendChild(messageText);
+
+					messageElement.appendChild(contentDiv);
+				} else {
+					messageElement.className = "system-message";
+					messageElement.textContent = message;
+				}
+				chatMessages.appendChild(messageElement);
+				chatMessages.scrollTop = chatMessages.scrollHeight;
+			}
+			
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(stream => {
+                    mediaRecorder = new MediaRecorder(stream);
+    
+                    mediaRecorder.ondataavailable = event => {
+                        audioChunks.push(event.data);
+                    };
+    
+                    mediaRecorder.onstop = () => {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                        audioChunks = [];
+    
+                        // Send the audioBlob through WebSocket
+                        const reader = new FileReader();
+                        reader.onload = () => {
+                            const base64Audio = reader.result.split(',')[1]; // Get the base64 string
+                            socket.emit("user_audio", JSON.stringify({ type: 'audio', data: base64Audio }));
+                            console.log('Audio sent via WebSocket');
+                        };
+                        reader.readAsDataURL(audioBlob);
+                    };
+    
+                    recordButton.addEventListener('mousedown', () => {
+                        audioChunks = []; // Reset audio chunks
+                        mediaRecorder.start();
+                        console.log('Recording started');
+                    });
+    
+                    recordButton.addEventListener('mouseup', () => {
+                        mediaRecorder.stop();
+                        console.log('Recording stopped');
+                    });
+                })
+                .catch(error => {
+                    console.error('Error accessing microphone:', error);
+                    alert('Microphone access is required for this feature.');
+                });
+                
+        function updateModule(moduleId, type, status, value) {
+            if(isDevicesListing){
+                return 0;
+            }
+                    
+            isDevicesListing = true;
+            const moduleElement = document.getElementById(moduleId);
+            if (status==='1'){
+                moduleElement.classList.remove('inactive');
+            }else{
+                moduleElement.classList.add('inactive');
+            }            
+
+            if (type==='onoff'){
+                if (value==='1'){
+                    moduleElement.querySelector('.toggle-button').classList.add('active');
+                }else{
+                    moduleElement.querySelector('.toggle-button').classList.remove('active');
+                }
+                
+            }else{
+                moduleElement.querySelector('p').textContent = value;
+            }
+            
+            isDevicesListing = false;
+        }
+        
+        function listAllDevices(updModules){
+        
+            if(isDevicesListing){
+                return 0;
+            }
+        
+            isDevicesListing = true;
+            modules = updModules;
+            modules.forEach(module => {
+                const moduleElement = document.createElement('div');
+                moduleElement.classList.add('module', 'inactive');
+                moduleElement.id = module.id;
+            
+                if (module.type === 'onoff') {
+                    moduleElement.innerHTML = `
+                        <h3>${module.name}</h3>
+                        <button class="toggle-button"></button>
+                    `;
+                } else {
+                    moduleElement.innerHTML = `
+                        <h3>${module.name}</h3>
+                        <p>N/A</p>
+                        <p>${module.unit}</p>
+                    `;
+                }
+            
+                document.querySelector('.modules-container').appendChild(moduleElement);
+            
+                if (module.type === 'onoff') {
+                    const toggleButton = moduleElement.querySelector('.toggle-button');
+                    toggleButton.addEventListener('click', () => {
+                        const newValue = toggleButton.classList.contains('active') ? '0' : '1';
+                        console.log(newValue);
+                        socket.emit("user_action", JSON.stringify({module:module.id, value:newValue}));
+                    });
+                }
+            });
+            
+            isDevicesListing = false;
+        }
+        
+        
+        socket.emit("jarvis_app_on", "hello");
+        
+		</script>
+	</body>
+</html>
