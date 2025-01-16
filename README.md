@@ -2,13 +2,15 @@
 
 # Jarvis
 
-The project **Jarvis** is a long-term personal project aimed at controlling/ automating virtually everything. In this humble beginning, the current focus is on automating work email management using Gemini LLM-based LangChain, Gmail API, and Python.
+The project **Jarvis** is a long-term personal project aimed at controlling/ automating virtually everything. In this humble beginning, the current focuses includes the following features with Gemini LLM-based LangChain, Gmail API, MQTT, and Python.
 
 ---
 
 ## Features
+- Desktop/computer controls such as opening music, apps, searching via web browser, etc.
+- MQTT IoT Device control, a simple one (relay control light) for now.
 - Intelligent email automation using Gemini LLM.
-- Seamless integration with Gmail API.
+- Integration with Gmail API.
 - Modular and extensible design for future automation features.
 
 ---
@@ -16,6 +18,7 @@ The project **Jarvis** is a long-term personal project aimed at controlling/ aut
 ## Getting Started
 
 Follow the steps below to set up and run the project.
+ESP8266 + Relay = Bought from ([Tao Bao](https://e.tb.cn/h.TkVHVR1RKvf5a5o?tk=tzGLedFIfD3))
 
 ### 1. Create the Environment
 
