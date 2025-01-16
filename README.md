@@ -2,7 +2,7 @@
 
 # Jarvis
 
-Watch in Youtube:
+Watch a simple demo in Youtube:
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/gwRaSlDPZv8/0.jpg)](https://www.youtube.com/watch?v=gwRaSlDPZv8&ab_channel=ChorWT)
 
