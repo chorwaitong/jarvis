@@ -23,9 +23,10 @@ The project **Jarvis** is a long-term personal project aimed at controlling/ aut
 
 ### Hardware:
 - ESP8266 + Relay = Bought from ([Tao Bao](https://e.tb.cn/h.TkVHVR1RKvf5a5o?tk=tzGLedFIfD3))
-- 
+  
 ### Software:
-Follow the steps below to set up and run the project.
+- Download ([ffmpeg](https://www.ffmpeg.org/download.html)), then extract into the folder `tools\`
+- Follow the steps below to set up and run the project.
 
 #### 1. Create the Environment
 
