@@ -65,7 +65,7 @@ intel['mqtt_broker'] = # The Broker url here, e.g., 'xxx.s1.eu.hivemq.cloud'
   
 #### 3. Run the Main Program
 
-Once the setup is complete, run `main.py` from the console, 
+Once the setup is complete, run `python main.py` from the console, 
 or
 edit the following lines of the `run.bat` file (to match with the python environment), and run it:
    ```bash
