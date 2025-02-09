@@ -61,7 +61,9 @@ To ensure compatibility and reproducibility, create a virtual environment using 
   
 #### 3. Run the Main Program
 
-Once the setup is complete, edit the following lines of the `run.bat` file (to match with the python environment), and run it:
+Once the setup is complete, run `main.py` from the console, 
+ - or -  
+edit the following lines of the `run.bat` file (to match with the python environment), and run it:
    ```bash
 set CONDA_PATH1=[if using conda, the path of the conda.exe, e.g., C:\Anaconda\condabin\conda]
 SET PYTHON_PATH1=[path to the python.exe of your environment, e.g., C:\Anaconda\envs\jarvis\python.exe]
