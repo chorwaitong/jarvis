@@ -59,7 +59,7 @@ import jarvis.sensory as sensory
 hearing = sensory.hearing(intel)
 
 # Uncomment below if it is desired to be always listening
-hearing.startListening() 
+# hearing.startListening() 
 
 # Flask app setup
 app = Flask(__name__)
