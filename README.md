@@ -56,7 +56,9 @@ To ensure compatibility and reproducibility, create a virtual environment using 
    ```
 
 #### 2. Follow the following instructions for setting up stuffs
-- Gmail and Gemini API Access: Refer to ([README_GMailAPI](https://github.com/chorwaitong/jarvis/blob/main/README_GMailAutomate.md))
+- Gemini API [MUST}: Refer to ([README_GeminiAPI](https://github.com/chorwaitong/jarvis/blob/main/README_GeminiAPI))
+The following are optional, but you will get errors when running `main.py`, for a quick start with minimal features, try `main_mini.py` instead.
+- Gmail Access: Refer to ([README_GMailAPI](https://github.com/chorwaitong/jarvis/blob/main/README_GMailAutomate.md))
 - For MQTT-based control of IoT devices, sign up for an MQTT Broker account, I am using HiveMQ Cloud: Refer ([HiveMQ Cloud](https://docs.hivemq.com/hivemq-cloud/quick-start-guide.html)). Next, store the credentials as environment variables as `MQTT_USERNAME` and `MQTT_PASSWORD`.
 - Update the following configuration line in the `main.py` .
 ```bash
