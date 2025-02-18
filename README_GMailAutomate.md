@@ -14,11 +14,6 @@ This tool feteches all unread mails from the INBOX, then decide whether action/r
    - Download the credentials JSON file and save it as `credentials.json` in the subfolder [\credentials\] of the project directory.
 6. The first run of the Gmail auth should create a `token.json` in the subfolder [\credentials\] after going through the auth process via web browser. Remember to allow all scopes on the consent screen.
 
-## Setting up Gemini API
-### Steps:
-1. Sign up or log in to the [Gemini AI Studio](https://aistudio.google.com/app/apikey).
-2. Generate an API key from the dashboard.
-3. Save the API key as an environment variable with name `GOOGLE_API_KEY`.
 
 ## Setting up Mailbox
 Nothing much, except to create 3 additional labels (you can customize it, just make sure it matches with the code), i.e., `_AI_general_info`, `_AI_need_action`, `_AI_urgent`.
